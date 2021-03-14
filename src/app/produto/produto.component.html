@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="p-grid p-fluid">
+        <div class="p-col-8">
+            <h1 style="margin-block-start: 0;">
+                Produtos
+            </h1>
+        </div>
+        <div class="p-col-4">
+            <div class="p-inputgroup">
+                <input type="text" pInputText placeholder="Buscar por nome" [(ngModel)]="filtroNome">
+                <button type="button" pButton icon="pi pi-search" (click)="pesquisar()"></button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngFor="let p of produtos">
+        <p-card header="{{p.nome}}" subheader="{{p.preco | currency:'BRL':'symbol':'.2-2'}}">
+            {{p.descricao}}
+
+            <ng-template pTemplate="footer">
+                <button pButton label="Adicionar ao carrinho" class="p-button-info"
+                        (click)="adicionarAoCarrinho(p)"></button>
+            </ng-template>
+        </p-card>
+
+        <div class="EmptyBox40"></div>
+    </div>
+</div>

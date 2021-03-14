@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="p-grid">
+        <div class="p-col">
+            <h1 style="margin-block-start: 0;">Carrinho</h1>
+        </div>
+        <div class="p-col">
+            <h1 style="margin-block-start: 0; text-align: right">
+                {{total | currency:'BRL':'symbol':'.2-2'}}
+            </h1>
+        </div>
+    </div>
+
+    <div *ngFor="let p of carrinho.produtos">
+        <p-card header="{{p.nome}}" subheader="{{p.preco | currency:'BRL':'symbol':'.2-2'}}">
+            {{p.descricao}}
+
+            <ng-template pTemplate="footer">
+                <button pButton label="Remover" class="p-button-info" (click)="removerProduto(p)"></button>
+            </ng-template>
+        </p-card>
+
+        <div class="EmptyBox40"></div>
+    </div>
+</div>
